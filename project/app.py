@@ -1,7 +1,9 @@
 import requests
+from dotenv import load_dotenv
 from fastapi import FastAPI, Request
 from requests.auth import HTTPBasicAuth
-
+import os
+load_dotenv()
 from bitbucket import (
     get_pr_diff,
     post_inline_comment
@@ -14,8 +16,8 @@ app = FastAPI()
 
 @app.post("/webhook")
 async def webhook(request: Request):
-    EMAIL = "112005tani@gmail.com"
-    TOKEN = "ATATT3xFfGF04MTorFR_14Qml4Y-ChBQp9m7vsmrTh8PVaE_UU-Soc77_U2hD9Y1cd58c_MRmt5h0NkCo_Lb403KxPeU5gveWEv9n3N86-l2DXM42OQMkDnZ6XYYCMZWFvnQFyhfKFu4C_C7bzLZHVrOezUfMGDRLSPyO-k1zpIi0EHY21hQeGE=06075101"
+    EMAIL = os.getenv("BITBUCKET_EMAIL")
+    TOKEN = os.getenv("BITBUCKET_API_TOKEN")
 
     payload = await request.json()
     event = request.headers.get("X-Event-Key")
