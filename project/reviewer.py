@@ -120,7 +120,7 @@ def review_code(diff_text: str):
 """
 
     payload = {
-        "model": "deepseek/deepseek-chat-v3-0324",
+        "model": "deepseek/deepseek-chat-v3-0324:free",
         "temperature": 0.1,
         "top_p": 0.9,
         "messages": [
