@@ -121,8 +121,8 @@ def review_code(diff_text: str):
 
     payload = {
         "model": "deepseek/deepseek-chat-v3-0324",
-        "temperature": 0.1,
-        "top_p": 0.9,
+        "temperature": 0.05,
+        "top_p": 0.95,
         "messages": [
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": prompt}
